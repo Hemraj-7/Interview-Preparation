@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>counter app</title>
+  </head>
+  <body>
+    <h2>Hello! this is counter app!!</h2>
+    <h1>1</h1>
+    <button class="plus">Count+</button>
+    <button class="minus">Count-</button>
+
+    <script>
+      let counterShow = document.querySelector("h1");
+      let Plus = document.querySelector(".plus");
+      let minus = document.querySelector(".minus");
+    //   console.log(counterShow);
+
+      Plus.addEventListener("click", () => {
+        count = parseInt(counterShow.innerText);
+        count++;
+        // console.log(counterShow);
+        counterShow.innerText = count;
+      });
+
+      minus.addEventListener("click", () => {
+        count = parseInt(counterShow.innerText);
+        count--;
+        counterShow.innerHTML = count;
+      });
+    </script>
+  </body>
+</html>
