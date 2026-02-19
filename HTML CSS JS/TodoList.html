@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo List App</title>
+    <style>
+      .mark {
+        text-decoration: line-through;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>To-Do List App</h1>
+    </header>
+    <main>
+      <h2>Here is List -</h2>
+      <div class="buttons">
+        <button id="add">Add Task</button>
+        <button id="delete">Delete Task</button>
+        <button id="mark">Mark Complete</button>
+      </div>
+      <ol class="tasks">
+        <!-- <li>Go to Collage</li>
+        <li>Go to Market</li>
+        <li>Read book</li>
+        <li>Do codding Practice</li> -->
+      </ol>
+    </main>
+  </body>
+  <script>
+    let arrayOfList = [];
+    let addTask = document.querySelector("#add");
+    let deleteTask = document.querySelector("#delete");
+    let markTask = document.querySelector("#mark");
+    let tasks = document.querySelector(".tasks");
+    let markList = [];
+
+    console.log(addTask, deleteTask, markTask, tasks, arrayOfList.length);
+    showTask();
+
+    addTask.addEventListener("click", () => {
+      let task = prompt("Enter Your Task.");
+      arrayOfList.push(task);
+      //   console.log(arrayOfList);
+      showTask();
+    });
+
+    deleteTask.addEventListener("click", () => {
+      let numberOftask = parseInt(
+        prompt("Enter the Number of task which is you want to delete."),
+      );
+      if (numberOftask > 0 && numberOftask < arrayOfList.length + 1) {
+        arrayOfList.splice(numberOftask - 1, 1);
+        alert(`Task Successfully deleted`);
+        showTask();
+      }
+    });
+
+    markTask.addEventListener("click", () => {
+      let markTask = parseInt(
+        prompt("Enter the Number of task which is you want to delete."),
+      );
+      if (markTask > 0 && markTask < arrayOfList.length + 1) {
+        markList.push(markTask);
+        console.log(markList);
+        showTask();
+      }
+    });
+
+    function showTask() {
+      if (arrayOfList.length === 0) {
+        tasks.innerHTML = "List is Empty Add New Task!!";
+      } else {
+        tasks.innerHTML = "";
+        console.log(markList);
+        arrayOfList.forEach((item, index) => {
+          let newTaskItem = document.createElement("li");
+          if (markList.includes(index + 1)) {
+            newTaskItem.className = "mark";
+          }
+          newTaskItem.textContent = item;
+          tasks.append(newTaskItem);
+        });
+      }
+    }
+  </script>
+</html>
