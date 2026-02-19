@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Validation</title>
+    <style>
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        font-size: 16px;
+      }
+      input,
+      label,
+      button {
+        font-size: 16px;
+        padding: 3px;
+      }
+
+      button {
+        padding: 5px 20px;
+      }
+
+      .error {
+        color: red;
+        font-size: 14px;
+      }
+      .submitSuccess {
+        color: green;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="myForm">
+      <div class="name">
+        <label for="name">Enter Name: </label>
+        <input
+          id="name"
+          type="text"
+          name="name"
+          placeholder="Enter your name"
+        />
+      </div>
+      <div class="email">
+        <label for="email">Enter Email: </label>
+        <input
+          id="email"
+          type="email"
+          name="email"
+          placeholder="example@gmail.com"
+        />
+      </div>
+      <div class="password">
+        <label for="password">Enter Password</label>
+        <input id="password" type="password" name="password" />
+      </div>
+      <div class="button">
+        <button type="submit">submit</button>
+      </div>
+      <p class="error" id="errorMsg"></p>
+      <p class="submitSuccess"></p>
+    </form>
+
+    <script>
+      let form = document.querySelector("#myForm");
+      let name = document.querySelector("#name");
+      let email = document.querySelector("#email");
+      let password = document.querySelector("#password");
+      let errorMsg = document.querySelector("#errorMsg");
+      let success = document.querySelector(".submitSuccess");
+
+      console.log(name, email, password);
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        errorMsg.textContent = "";
+        if (name.value.trim() === "") {
+          errorMsg.textContent = "Please Enter name";
+          return;
+        }
+        if (email.value.trim() === "") {
+          errorMsg.textContent = "Please Enter Email";
+          return;
+        }
+        if (password.value.trim() === "") {
+          errorMsg.textContent = "Please Enter Password";
+          return;
+        }
+        if (password.value.length < 6) {
+          errorMsg.textContent = "Minimum Password length is 6";
+          return;
+        }
+        success.textContent = "Form Submited Successfully!!";
+      });
+    </script>
+  </body>
+</html>
+
+<!-- <!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Validation</title>
+    <style>
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        font-size: 16px;
+      }
+      input,
+      label,
+      button {
+        font-size: 16px;
+        padding: 3px;
+      }
+
+      button {
+        padding: 5px 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="">
+      <div class="name">
+        <label for="name">Enter Name: </label>
+        <input
+          id="name"
+          type="text"
+          name="name"
+          placeholder="Enter your name"
+          required
+        />
+      </div>
+      <div class="email">
+        <label for="email">Enter Email: </label>
+        <input
+          id="email"
+          type="email"
+          name="email"
+          placeholder="example@gmail.com"
+          required
+        />
+      </div>
+      <div class="password">
+        <label for="password">Enter Password</label>
+        <input id="password" type="password" name="password" required minlength={6} />
+      </div>
+      <div class="button">
+        <button>submit</button>
+      </div>
+    </form>
+  </body>
+</html> -->
