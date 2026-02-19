@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dark Mode</title>
+    <style>
+      body {
+        transition:
+          background-color 0.3s ease,
+          color 0.3s ease;
+      }
+      .dark {
+        background-color: black;
+        color: white;
+      }
+      .light {
+        background-color: white;
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>This is Toggle Dark Mode!!</h1>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo saepe
+      repellendus molestiae soluta distinctio amet vitae nesciunt? Inventore
+      recusandae asperiores rerum similique unde repellat nesciunt vero
+      obcaecati laudantium, quas dolores vel eveniet perspiciatis expedita
+      cupiditate iure deserunt. Alias, eum. Vel ipsum voluptate, et odit iste
+      explicabo ratione molestias nobis! Aliquid vitae fugit ratione quae cum!
+    </p>
+    <button class="button">Dark Mode</button>
+    <script>
+      let btn = document.querySelector("button");
+      console.log(btn);
+
+      let toggle = false;
+
+      if (localStorage.getItem("mode") === "dark") {
+        document.body.classList.add("dark");
+        btn.innerText = "Light Mode";
+      } else {
+        document.body.classList.add("light");
+      }
+
+      btn.addEventListener("click", () => {
+        if (!toggle) {
+          document.body.className = "dark";
+          toggle = true;
+          btn.innerText = "Light Mode";
+        } else {
+          document.body.className = "light";
+          toggle = false;
+          btn.innerText = "Dark Mode";
+        }
+      });
+    </script>
+  </body>
+</html>
